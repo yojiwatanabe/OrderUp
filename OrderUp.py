@@ -91,13 +91,16 @@ class OrderUp():
     # Connect to the MySQL DB and throw an error if not successful
     def connectToDb(self) -> connector.pooling.PooledMySQLConnection | connector.MySQLConnection | None:
         config = dotenv_values(".env")
-        db_user = config['DB_USER']
-        db_pass = config['DB_PASS']
+        dbName = config['DB_NAME']
+        dbUser = config['DB_USER']
+        dbPass = config['DB_PASS']
+        dbHost = config['DB_HOST']
         
         try:
-            database = connector.connect(user=db_user, password=db_pass,
-                                host='localhost',
-                                database='OrderUpDB')
+            database = connector.connect(user=dbUser, 
+                                         password=dbPass,
+                                         host=dbHost,
+                                         database=dbName)
         except connector.Error as err:
             logging.error("MySQL Connector: something went wrong: {}".format(err))
             return None
@@ -151,5 +154,5 @@ class OrderUp():
 if __name__ == "__main__":
     # exportMarkets(coinbaseClient)
     client = OrderUp()
-
+    print("Hello world")
     # client.createOrder("BTC-USDC", "30000.00", "1.2345", str(datetime.now()))
