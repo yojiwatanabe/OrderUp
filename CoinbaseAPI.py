@@ -15,13 +15,13 @@ class CoinbaseAPI:
         parser = argparse.ArgumentParser()
         parser.add_argument(
             '-d', '--debug',
-            help="Print lots of debugging statements",
+            help="Print debugging statements",
             action="store_const", dest="loglevel", const=logging.DEBUG,
             default=logging.WARNING,
         )
         parser.add_argument(
             '-v', '--verbose',
-            help="Be verbose",
+            help="Print verbosely",
             action="store_const", dest="loglevel", const=logging.INFO,
         )
         args = parser.parse_args()
@@ -30,9 +30,16 @@ class CoinbaseAPI:
         
         logging.info(" - - - Coinbase Client Ready - - - ")
 
+    def getOpenOrders(self):
+        method = "GET"
+        path = "/api/v3/brokerage/orders/historical/batch"
+        params = "?order_status=OPEN"
+        payload = ""
+        return self.sendRequest(method, path, params, payload)
+
     def getAccounts(self):
         method = "GET"
-        path = "/api/v3/brokerage/products"
+        path = "/api/v3/brokerage/accounts"
         params = ""
         payload = ""
         return self.sendRequest(method, path, params, payload)
