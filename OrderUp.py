@@ -151,5 +151,5 @@ class OrderUp():
 if __name__ == "__main__":
     # exportMarkets(coinbaseClient)
     client = OrderUp()
-    # print(traderClient.coinbaseClient.getMarketPrices("BTC-USDC"))
-    client.createOrder("BTC-USDC", "30000.00", "1.2345", str(datetime.now()))
+
+    # client.createOrder("BTC-USDC", "30000.00", "1.2345", str(datetime.now()))
