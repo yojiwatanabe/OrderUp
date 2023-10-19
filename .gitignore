@@ -1,0 +1,8 @@
+./venv
+./cb-md
+./__pycache__
+.DS_STORE
+.env
+.vscode
+
+markets.csv
