@@ -1,6 +1,7 @@
-./venv
-./cb-md
-./__pycache__
+venv/
+cb-md/
+__pycache__/
+
 .DS_STORE
 .env
 .vscode
